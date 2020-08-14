@@ -18,6 +18,7 @@ app.use(express.static("public"));
 var items = [];
 // ["Buy Food", "Cook Food", "Eat Food"];
 var workItems = [];
+let port = process.env.PORT;
 
 ///////////////
 const credential = require('./constants');
@@ -186,6 +187,9 @@ app.post("/delete", function(req, res) {
 
 });
 
-app.listen(3000, function() {
+if (port == null || port == "") {
+  port = 3000;
+}
+app.listen(port, function() {
   console.log("Server started on port 3000");
 });
